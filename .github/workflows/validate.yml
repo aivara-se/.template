@@ -1,0 +1,17 @@
+name: validate
+
+# The template has nothing to check. A repository adopting it replaces the
+# placeholder step with the commands under "Verify before pushing" in AGENTS.md.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Placeholder
+        run: echo "Replace this step with the repository's checks."
