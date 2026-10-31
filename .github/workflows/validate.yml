@@ -1,11 +1,13 @@
 name: validate
 
-# The template has nothing to check. A repository adopting it replaces the
-# placeholder step with the commands under "Verify before pushing" in AGENTS.md.
+# `validate` runs on every pull request and is the check the default branch
+# requires. The template has nothing to check: a repository adopting it replaces
+# the placeholder step with the commands under "Verify before pushing" in AGENTS.md.
 on:
-  push:
-    branches: [main]
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   validate:
