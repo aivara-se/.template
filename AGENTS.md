@@ -38,11 +38,14 @@ Run the whole sequence and read every result — the last exit code says nothing
 
 {{REPO_CHECK_NOTES}}
 
+The same commands run in `.github/workflows/validate.yml`, whose job is named `validate`: that is the check the default branch requires before a merge.
+
 ## Version Control
 
-- **Branches**: lowercase, hyphens only, one per task, named for the change — `fix-log-timezone`, `chore/adopt-agents-config`. No uppercase, no underscores, no personal prefixes.
+- **Branches**: lowercase, hyphens, one per task: `docs/`, `feat/`, `fix/` or `chore/` and a short name — `docs/adopt-agents-config`, `fix-log-timezone`. No uppercase, no underscores, no personal prefixes.
 - **Commits**: Conventional Commits, lowercase, single line, no scopes — `type: short description`.
 - **Never** commit to `{{DEFAULT_BRANCH}}` directly, and **never** force-push a branch someone else has seen.
 - Keep history linear: no merge commits, no empty commits, no work-in-progress commits.
 - Commit under your own identity, never another agent's.
-- Remote work is a branch plus a pull request: the body says what changed, what was verified and how, and what was left out; request review from {{REVIEW_REQUEST_TARGETS}}. Leave the tree clean.
+- Remote work is a branch plus a pull request: the body says what changed, what was verified and how, and what was left out. Leave the tree clean.
+- Request review from {{REVIEW_REQUEST_TARGETS}} — the operator alone for a documents-only change, the operator and one peer agent for an implementation one.
