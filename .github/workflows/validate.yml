@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: Format
-        run: bun x prettier@3.9.10 --check .
+        run: bun fmt --check .
 
       - name: Placeholder
         run: echo "Replace this step with the repository's checks."
