@@ -1,8 +1,9 @@
 name: validate
 
 # `validate` runs on every pull request and is the check the default branch
-# requires. The template has nothing to check: a repository adopting it replaces
-# the placeholder step with the commands under "Verify before pushing" in AGENTS.md.
+# requires. Formatting is checked here. A repository adopting the template
+# replaces the placeholder step with the commands under "Verify before pushing"
+# in AGENTS.md.
 on:
   pull_request:
 
@@ -14,6 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Format
+        run: bun x prettier@3.9.10 --check .
 
       - name: Placeholder
         run: echo "Replace this step with the repository's checks."
