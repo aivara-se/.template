@@ -21,7 +21,7 @@ jobs:
           bun-version: latest
 
       - name: Format
-        run: bun fmt --check .
+        run: bun fmt --no-script --check .
 
       - name: Placeholder
         run: echo "Replace this step with the repository's checks."
