@@ -1,25 +1,26 @@
 name: validate
 
-# Nothing here is built: the template has no code. A repository adopting it
-# replaces the placeholder step with its own gate. The `agents` job is the one
-# check that applies here, and it is the same in every repository.
 on:
-  push:
-    branches: [main]
   pull_request:
   merge_group:
 
-permissions:
-  contents: read
-
 jobs:
-  agents:
+  validate-agents:
     uses: aivara-se/.github/.github/workflows/validate-agents.yml@main
+
+  validate-docs:
+    uses: aivara-se/.github/.github/workflows/validate-docs.yml@main
+
+  validate-config:
+    uses: aivara-se/.github/.github/workflows/validate-config.yml@main
+    secrets:
+      ORG_READ_TOKEN: ${{ secrets.ORG_READ_TOKEN }}
 
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
-
-      - name: Placeholder
-        run: echo "Replace this step with the repository's checks."
+      - uses: oven-sh/setup-bun@v2
+      - run: bun fmt --no-script --check .
