@@ -11,3 +11,7 @@ _Fill in what it is, who it serves, the behaviour and its rules, the limits it m
 ## Architecture
 
 _Fill in how it works, its dependencies, infrastructure, and checks._
+
+## Bogus
+
+An extra section.
